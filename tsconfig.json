@@ -1,0 +1,25 @@
+{
+  "ts-node": { "files": true },
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "CommonJS",
+    "rootDirs": ["./src", "./__tests__"],
+    "baseUrl": "src",
+    "typeRoots": ["types"],
+    "moduleResolution": "node",
+    "types": ["jest", "node"],
+    "sourceMap": true,
+    "outDir": "./build",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*.ts", "./__tests__/**/*.ts"],
+  "exclude": ["./node_modules", "./build"]
+}
