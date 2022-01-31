@@ -15,7 +15,8 @@ const app = express()
 
 app.use(
   cors({
-    origin: 'https://casino-royale.vercel.app'
+    origin: 'https://casino-royale.vercel.app',
+    credentials: true
   })
 )
 app.use(express.urlencoded({ extended: false }))
