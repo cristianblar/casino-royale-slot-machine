@@ -15,7 +15,6 @@ const app = express()
 
 app.use(
   cors({
-    credentials: true,
     origin: 'https://casino-royale.vercel.app'
   })
 )
@@ -38,9 +37,8 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
             client: mClient
           }),
           cookie: {
-            secure: process.env.NODE_ENV !== 'development',
+            secure: true,
             sameSite: 'none',
-            httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 14
           }
         })
