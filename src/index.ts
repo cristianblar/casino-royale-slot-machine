@@ -43,8 +43,8 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
       app.use(passport.session())
       app.use('/', mainRouter)
       app.listen(
-        (process.env.EXPRESS_PORT && +process.env.EXPRESS_PORT) || 4000,
-        () => console.log(`App listening on port ${process.env.EXPRESS_PORT}!`)
+        (process.env.PORT && +process.env.PORT) || 4000,
+        () => console.log(`App listening on port ${process.env.PORT}!`)
       )
     })
     .catch(console.error)
