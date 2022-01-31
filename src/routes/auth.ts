@@ -6,6 +6,10 @@ import { userService } from '../services'
 
 const authRouter = Router()
 
+authRouter.get('/check-status', ensureAuthentication, (req, res) => {
+  res.sendStatus(200)
+})
+
 authRouter.post('/signup-signin', (req, res, next) => {
   passport.authenticate('local', (error, user) => {
     if (error || !user) return res.status(400).json({ error })
