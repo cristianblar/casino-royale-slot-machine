@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { passport } from './auth'
 import cors from 'cors'
 import express from 'express'
@@ -8,6 +7,10 @@ import mongoose from 'mongoose'
 import MongoStore from 'connect-mongo'
 import session from 'express-session'
 import { errorHandler } from './middlewares'
+
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 
 const app = express()
 
@@ -33,7 +36,7 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
             autoRemove: 'native'
           }),
           cookie: {
-            secure: process.env.NODE_ENV === 'production',
+            secure: process.env.NODE_ENV !== 'development',
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 14
           }
@@ -42,9 +45,8 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
       app.use(passport.initialize())
       app.use(passport.session())
       app.use('/', mainRouter)
-      app.listen(
-        (process.env.PORT && +process.env.PORT) || 4000,
-        () => console.log(`App listening on port ${process.env.PORT}!`)
+      app.listen((process.env.PORT && +process.env.PORT) || 4000, () =>
+        console.log(`App listening on port ${process.env.PORT}!`)
       )
     })
     .catch(console.error)
