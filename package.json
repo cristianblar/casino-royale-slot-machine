@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "build": "tsc --sourceMap false",
-    "start:dev": "NODE_ENV=development nodemon ./src/index.ts"
+    "start:dev": "NODE_ENV=development nodemon ./src/index.ts",
+    "start": "yarn build && node ./build/index.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
