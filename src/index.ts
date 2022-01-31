@@ -38,9 +38,7 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
             client: mClient
           }),
           cookie: {
-            sameSite: 'none',
-            secure: true,
-            httpOnly: true
+            sameSite: 'none'
           }
         })
       )
