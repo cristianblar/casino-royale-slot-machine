@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(errorHandler)
 
+app.set('trust proxy', 1)
+
 if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
   mongoose
     .connect(process.env.MONGO_URI)
@@ -37,9 +39,10 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
           store: MongoStore.create({
             client: mClient
           }),
+          proxy: true,
           cookie: {
             sameSite: 'none',
-            secure: 'auto'
+            secure: true
           }
         })
       )
