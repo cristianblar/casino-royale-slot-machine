@@ -36,7 +36,12 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
           saveUninitialized: false,
           store: MongoStore.create({
             client: mClient
-          })
+          }),
+          cookie: {
+            sameSite: 'none',
+            secure: true,
+            httpOnly: true
+          }
         })
       )
       app.use(passport.initialize())
