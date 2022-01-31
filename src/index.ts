@@ -39,7 +39,7 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
           }),
           cookie: {
             sameSite: 'none',
-            secure: 'auto'
+            secure: true
           }
         })
       )
