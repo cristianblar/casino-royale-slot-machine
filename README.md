@@ -37,25 +37,25 @@ Requires previous authentication.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/cristianblar/casino-royale-slot-machine
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd casino-royale-slot-machine
 ```
 
 Install dependencies
 
 ```bash
-  npm install
+  yarn install
 ```
 
 Start the server
 
 ```bash
-  npm run start
+  yarn start
 ```
 
 ## Environment Variables
