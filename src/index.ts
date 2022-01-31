@@ -1,7 +1,6 @@
 import { passport } from './auth'
 import cors from 'cors'
 import express from 'express'
-import helmet from 'helmet'
 import mainRouter from './routes'
 import mongoose from 'mongoose'
 import MongoStore from 'connect-mongo'
@@ -14,9 +13,13 @@ if (process.env.NODE_ENV === 'development') {
 
 const app = express()
 
-app.use(cors())
-app.use(helmet())
-app.use(express.urlencoded({ extended: true }))
+app.use(
+  cors({
+    credentials: true,
+    origin: 'https://casino-royale.vercel.app'
+  })
+)
+app.use(express.urlencoded({ extended: false }))
 
 app.use(errorHandler)
 
@@ -32,11 +35,11 @@ if (process.env.MONGO_URI && process.env.SESSION_SECRET) {
           resave: false,
           saveUninitialized: true,
           store: MongoStore.create({
-            client: mClient,
-            autoRemove: 'native'
+            client: mClient
           }),
           cookie: {
             secure: process.env.NODE_ENV !== 'development',
+            sameSite: 'none',
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 14
           }
