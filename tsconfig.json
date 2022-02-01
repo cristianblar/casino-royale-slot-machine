@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ES2018",
     "module": "CommonJS",
-    "rootDirs": ["./src", "./__tests__"],
+    "rootDirs": ["./src"],
     "baseUrl": "src",
     "typeRoots": ["types"],
     "moduleResolution": "node",
